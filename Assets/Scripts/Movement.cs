@@ -3,22 +3,27 @@ using System.Collections;
 
 public class Movement : MonoBehaviour
 {
-    CharacterController characterController;
-
-    public float speed = 6.0f;
-
-    private Vector2 moveDirection = Vector2.zero;
-
-    void Start()
-    {
-        characterController = GetComponent<CharacterController>();
-    }
+    [SerializeField] private float _speed = 2.0f;
+    [SerializeField] private float _rotationSpeed = 1.0f;
 
     void Update()
     {
-        moveDirection = new Vector2
+        CaptureRotation();
+        ConstantMoveRight();
+    }
+
+    private void CaptureRotation()
+    {
+        Vector2 _inputs = new Vector2
             (Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        moveDirection *= speed;
-        characterController.Move(moveDirection * Time.deltaTime);
+
+        float axis = _inputs.x + _inputs.y; 
+
+        transform.Rotate(0.0f, 0.0f, axis * _rotationSpeed * Time.deltaTime);
+    }
+
+    private void ConstantMoveRight()
+    {
+        transform.position += transform.right * Time.deltaTime * _speed;
     }
 }
