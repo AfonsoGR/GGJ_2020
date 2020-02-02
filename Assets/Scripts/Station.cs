@@ -39,7 +39,7 @@ public class Station : MonoBehaviour
     /// Method to be used when an enemy entity strikes the station
     /// </summary>
     /// <param name="dmg"> Damage value </param>
-    public void TakeHit(int dmg)
+    private void TakeHit(int dmg)
     {
         _stationHP -= dmg;
     }
@@ -52,5 +52,27 @@ public class Station : MonoBehaviour
     public void SpeedRepair(int repairValue)
     {
         _repairPercentage += repairValue;
+    }
+
+    /// <summary>
+    /// Sent when another object enters a trigger collider attached to this
+    /// object (2D physics only).
+    /// </summary>
+    /// <param name="other">The other Collider2D involved in this collision.</param>
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("SmallAsteroid"))
+        {
+            Asteroid astro = GetComponent<Asteroid>();
+            TakeHit(astro.Dmg);
+            Destroy(other.gameObject);
+        }
+        
+        if (other.CompareTag("BigAsteroid"))
+        {
+            Asteroid astro = GetComponent<Asteroid>();
+            TakeHit(astro.Dmg);
+            Destroy(other.gameObject);
+        }
     }
 }

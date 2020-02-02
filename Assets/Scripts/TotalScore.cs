@@ -8,15 +8,6 @@ public class TotalScore : ScriptableObject
     private int _totScore = default;
 
     /// <summary>
-    /// Awake is called when the script instance is being loaded. To be used in
-    /// LevelUI object to initialize the array size
-    /// </summary>
-    public void Awake()
-    {
-        _scores = new int[10];
-    }
-
-    /// <summary>
     /// Property to show player's total score after winning or losing the game,
     /// in the respective screens
     /// </summary>
@@ -34,6 +25,16 @@ public class TotalScore : ScriptableObject
         }
 
     }
+    
+    /// <summary>
+    /// Awake is called when the script instance is being loaded. To be used in
+    /// LevelUI object to initialize the array size
+    /// </summary>
+    public void Awake()
+    {
+        _scores = new int[10];
+    }
+
 
     /// <summary>
     /// Method to save level score in the array if "slot" has value of zero
