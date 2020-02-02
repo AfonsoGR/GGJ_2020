@@ -150,6 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _snakeLength: 8
+  _partSpeed: 20
+  _head: {fileID: 400172023}
   _snakeBody: {fileID: 7264610545588793873, guid: 5362dae365b918d4ba6c40a1139220bc,
     type: 3}
   _snakeTail: {fileID: 5695805244839571276, guid: 388467651f4653c4081aa1021ff08bcc,
